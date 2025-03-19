@@ -1,0 +1,1 @@
+Hosts file - on Windows C:\windows\system32\drivers\etc\hosts; on Linux /etc/hosts
