@@ -11,3 +11,10 @@
 - fierce - recon and subdomain enumeration
 - dnsrecon - combines multiple dns recon techniques
 - theHarvester - OSINT tool that gathers multi-source info (including DNS records)
+
+## Certificate Transparency (CT) logs
+- CT logs offer historical view of certs issued for domains and subdomains
+
+#### Tools to search CT logs
+- crt.sh 
+- search.censys.io
