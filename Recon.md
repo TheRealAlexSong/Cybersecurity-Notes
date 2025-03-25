@@ -18,3 +18,18 @@
 #### Tools to search CT logs
 - crt.sh 
 - search.censys.io
+
+## Fingerprinting
+- Banner grabbing
+- Analyzing HTTP headers
+- Probing for responses (crafting requests and looking for unique responses)
+- Analyze page content (structure, scripts)
+
+#### Tools
+- Wappalyzer
+- BuiltWith
+- WhatWeb
+- nmap
+- Netcraft
+- wafw00f - CLI tool for fingerprinting web application firewalls (WAFs)
+- Nikto - open source web server scanner
