@@ -33,3 +33,4 @@
 - Netcraft
 - wafw00f - CLI tool for fingerprinting web application firewalls (WAFs)
 - Nikto - open source web server scanner
+
