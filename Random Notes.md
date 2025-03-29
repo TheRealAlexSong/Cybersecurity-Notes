@@ -6,3 +6,9 @@ If a URL does not load, try performing curl
 
 When performing curl on a directory, ensure the URL contains the following forward slash
 
+Quick add to /etc/hosts:
+```shell
+$ sudo sh -c 'echo "SERVER_IP  academy.htb" >> /etc/hosts'
+```
+
+[[Common Commands#ffuf]]

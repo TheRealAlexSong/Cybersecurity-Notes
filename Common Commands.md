@@ -103,3 +103,25 @@ Example: ```curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]
 - `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`: This part filters the JSON results, selecting only entries where the `name_value` field (which contains the domain or subdomain) includes the string "`dev`". The `-r` flag tells `jq` to output raw strings.
 - `sort -u`: This sorts the results alphabetically and removes duplicates.
 
+## ffuf
+Basic usage: 
+$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ - note the ":FUZZ" and "FUZZ" keyword usage
+
+Usage with flags:
+```shell
+$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ -recursion -recursion-depth 1 -e .php -v
+```
+
+```shell
+$ ffuf -w /opt/useful/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://academy.htb:PORT/ -H 'Host: FUZZ.academy.htb'
+```
+
+Flags:
+	-recursion -recursion-depth xx
+		toggle recursion and specify depth
+	-e .php
+		specify file extension
+	-v
+		output full URL
+	-H 'Host: FUZZ.academy.htb'
+		specify host to scan for vhosts
