@@ -105,18 +105,31 @@ Flags:
 	-o save output 
 
 # crt.sh API call
-Example: ```curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]
+Example: 
+```shell
+$ curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]
  | select(.name_value | contains("dev")) | .name_value' | sort -u
-- `curl -s "https://crt.sh/?q=facebook.com&output=json"`: This command fetches the JSON output from crt.sh for certificates matching the domain `facebook.com`.
-- `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`: This part filters the JSON results, selecting only entries where the `name_value` field (which contains the domain or subdomain) includes the string "`dev`". The `-r` flag tells `jq` to output raw strings.
-- `sort -u`: This sorts the results alphabetically and removes duplicates.
+
+	curl -s "https://crt.sh/?q=facebook.com&output=json"
+	This command fetches the JSON output from crt.sh for certificates matching the domain `facebook.com`
+
+	jq -r '.[] | select(.name_value | contains("dev")) | .name_value'
+	This part filters the JSON results, selecting only entries where the `name_value` field (which contains the domain or subdomain) includes the string "`dev`". The `-r` flag tells `jq` to output raw strings.
+
+	sort -u
+	This sorts the results alphabetically and removes duplicates
+```
 
 ## ffuf
 Can be used to bruteforce and spider website directories and pages/files, subdomains and vhosts, website/URL parameters using GET or POST, and parameter values
 
-Basic usage: 
-$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ - note the ":FUZZ" and "FUZZ" keyword usage
+#### Basic usage: 
 
+```shell
+$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ
+
+	note the ":FUZZ" and "FUZZ" keyword usage
+```
 #### Usage with flags:
 
 ```shell
