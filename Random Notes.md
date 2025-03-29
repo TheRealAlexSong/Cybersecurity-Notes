@@ -11,4 +11,4 @@ Quick add to /etc/hosts:
 $ sudo sh -c 'echo "SERVER_IP  academy.htb" >> /etc/hosts'
 ```
 
-[[Common Commands#ffuf]]
+In PHP, "POST" data "content-type" can only accept "application/x-www-form-urlencoded"

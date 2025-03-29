@@ -69,6 +69,14 @@ Flags:
 	-L follow redirection
 	-b set cookie
 
+Examples:
+```shell
+$ curl http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=key' -H 'Content-Type: application/x-www-form-urlencoded'
+```
+
+```shell
+$ curl http://83.136.251.19:59586/keys.php -X POST -d "key=API_p3n_73571n6_15_fun"
+```
 # dig
 | Command                                     | Description                                                                                                                                                                                          |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -104,16 +112,35 @@ Example: ```curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]
 - `sort -u`: This sorts the results alphabetically and removes duplicates.
 
 ## ffuf
+Can be used to bruteforce and spider website directories and pages/files, subdomains and vhosts, website/URL parameters using GET or POST, and parameter values
+
 Basic usage: 
 $ ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ - note the ":FUZZ" and "FUZZ" keyword usage
 
-Usage with flags:
+#### Usage with flags:
+
+```shell
+$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ -u http://academy.htb:38784/indexFUZZ
+```
+
 ```shell
 $ ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ -recursion -recursion-depth 1 -e .php -v
 ```
 
 ```shell
 $ ffuf -w /opt/useful/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://academy.htb:PORT/ -H 'Host: FUZZ.academy.htb'
+```
+
+```shell
+$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php?FUZZ=key -fs xxx
+```
+
+```shell
+$ ffuf -w /opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx`
+```
+
+```shell
+$ ffuf -w ids.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=FUZZ' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx
 ```
 
 Flags:
@@ -125,3 +152,9 @@ Flags:
 		output full URL
 	-H 'Host: FUZZ.academy.htb'
 		specify host to scan for vhosts
+	-fs xxx
+		exclude results with size xxx bytes
+	-d
+		fuzz data
+	-X POST
+		send POST requests
