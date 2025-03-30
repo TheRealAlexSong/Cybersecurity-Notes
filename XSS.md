@@ -1,4 +1,4 @@
-
+#### Payloads
 Basic payload
 ```html
 <script>alert(window.origin)</script>
@@ -23,3 +23,7 @@ Payload that does not contain \<script> tag (useful for DOM attacks). Creates ne
 ```html
 <img src="" onerror=alert(window.origin)>
 ```
+##### More Payloads
+[PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/README.md) or [PayloadBox](https://github.com/payloadbox/xss-payload-list)
+#### Tools
+ [XSS Strike](https://github.com/s0md3v/XSStrike), [Brute XSS](https://github.com/rajeshmajumdar/BruteXSS), and [XSSer](https://github.com/epsylon/xsser)

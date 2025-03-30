@@ -171,3 +171,13 @@ Flags:
 		fuzz data
 	-X POST
 		send POST requests
+
+# xsstrike
+#### Basic usage:
+```shell
+$ python xsstrike.py -u "http://SERVER_IP:PORT/index.php?task=test" 
+```
+
+```shell-session
+<HtMl%09onPoIntERENTER+=+confirm()>
+```
