@@ -1,0 +1,14 @@
+#### Definitions
+- Artificial Intelligence (A.I.) - broad field encompassing intelligent systems that can perform tasks that would otherwise require human intelligence
+- Machine Learning (M.L.) - a sub-field of A.I. that focuses on systems learning from data without explicit programming. Algorithms use statistical techniques. Three types of M.L.:
+	- Supervised Learning - learn from labeled data (image classification, spam detection)
+	- Unsupervised Learning - learn from unlabeled data (customer segmentation, anomaly detection)
+	- Reinforcement Learning - learn from trial and error, interacting with environment and receiving rewards or penalties (game playing, robotics, autonomous driving)
+- Deep Learning (D.L.) - a sub-field of M.L. using multi-layer neural networks to learn and extract features from data. Can identify patterns in large datasets, good for tasks with unstructured data or high-dimensional data (images, audio, text). Characteristics:
+	- Hierarchical Feature Learning - can learn hierarchical data representations, where each layer captures increasingly abstract features (ex. lower layers detect edges and textures, higher layers identify shapes and objects)
+	- End-to-End Learning - can map raw input data to desired outputs without manual feature engineering
+	- Scalability - scales with large datasets
+	- Common D.L. neural networks:
+		- Convolutional Neural Networks (CNNs): Use convolutional layers to detect local patterns and spatial hierarchies (image and video data)
+		- Recurrent Neural Networks (RNNs): Use loops that allow information to persist across time steps (sequential data like text and speech)
+		- Transformers: Effective for natural language processing tasks. Leverage self-attention mechanisms to handle long-range dependencies
